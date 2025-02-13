@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Layout from "../../../../containers/common/common-layout";
 import Slider from "react-slick";
@@ -36,8 +36,6 @@ var settings1 = {
 };
 
 const PortfolioDetail1 = () => {
-  const initilindex = { index: 0, isOpen: false };
-  
   return (
     <Layout pathList={["portfolio details", "container layout"]} pathTitle="container layout">
       <section className="portfolio-section port-col zoom-gallery detail-page fullwidth-portfolio agency">

@@ -1754,6 +1754,13 @@ section {
       margin-bottom: -16px;
     }
   }
+  &.bg-theme{
+    .swiper-wrapper{
+      .slick-slider{
+        width: 100%;
+      }
+    }
+  }
 }
 /**************************
 screenshot section end
