@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
-import Lightbox from "react-18-image-lightbox";
-import { Container, Row, Col, Card, CardHeader, CardBody, Media } from "reactstrap";
-import { AllImgData, BagsImgData, FeshionImgData, ShoesImgData, WatchImgData } from "./database";
+import { useState } from "react";
+import { Col, Container, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
 import AllImgFun from "./Gallerys/allImgs";
-import FashionImgFunc from "./Gallerys/fashionImgs";
 import BagsImgFunc from "./Gallerys/bagsImgs";
-import WatchImgFuc from "./Gallerys/watchImg";
+import FashionImgFunc from "./Gallerys/fashionImgs";
 import ShoesImgFun from "./Gallerys/shoesImg";
+import WatchImgFuc from "./Gallerys/watchImg";
 
 const Basic = ({ className, title, subTitle, fluid }) => {
   const [activeTab, setActiveTab] = useState("1");

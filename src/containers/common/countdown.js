@@ -83,7 +83,7 @@ const CountdownComponent = () => {
   var day = d.getDate();
   var coundown = new Date(year, month, day + 10).getTime();
 
-  const Countdown = dynamic(() => import("react-countdown-now"), {
+  const Countdown = dynamic(() => import("react-countdown"), {
     ssr: false,
   });
 

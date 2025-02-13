@@ -1,36 +1,25 @@
-import React, { Fragment, useState } from "react";
-import { AllImgData, BagsImgData, FeshionImgData, ShoesImgData, WatchImgData } from "../database";
-import Lightbox from "react-18-image-lightbox";
+import { Gallery, Item } from "react-photoswipe-gallery";
+import { FeshionImgData } from "../database";
 
 const FashionImgFunc = ({ className, title, subTitle }) => {
-  const initilindex = { index: 0, isOpen: false };
-  const [photoIndex, setPhotoIndex] = useState(initilindex);
 
-  const onClickImg = (img, i) => {
-    setPhotoIndex({ ...photoIndex, index: i, image: img, isOpen: true });
-  };
-
-  const onMovePrev = () => {
-    const prev = (photoIndex.index + FeshionImgData.length - 1) % FeshionImgData.length;
-    const test = FeshionImgData[(photoIndex.index + FeshionImgData.length - 1) % FeshionImgData.length];
-    setPhotoIndex({ ...photoIndex, index: prev, image: test.img });
-  };
-  const onMoveNext = () => {
-    const next = (photoIndex.index + 1) % FeshionImgData.length;
-    const test = FeshionImgData[(photoIndex.index + 1) % FeshionImgData.length];
-    setPhotoIndex({ ...photoIndex, index: next, image: test.img });
-  };
   return (
-    <Fragment>
+    <Gallery>
       {FeshionImgData.length > 0
         ? FeshionImgData.map((item, i) => (
             <div className={className} key={i}>
               <div className="overlay">
                 <div className="border-portfolio">
-                  <div className="overlay-background" onClick={() => onClickImg(item.img, i)}>
-                    <i aria-hidden="true" className="fa fa-plus"></i>
-                  </div>
-                  <img alt="" className="img-fluid blur-up lazyload" src={`/assets/images/${item.img}`} />
+                  <Item original={`/assets/images/${item.img}`} thumbnail={`/assets/images/${item.img}`} width="960" height="980">
+                    {({ open, ref }) => (
+                      <>
+                        <div className="overlay-background" onClick={open}>
+                          <i aria-hidden="true" className="fa fa-plus"></i>
+                        </div>
+                        <img ref={ref} alt="" className="img-fluid blur-up lazyload" src={`/assets/images/${item.img}`} />
+                      </>
+                    )}
+                  </Item>
                 </div>
               </div>
               {title && (
@@ -42,10 +31,7 @@ const FashionImgFunc = ({ className, title, subTitle }) => {
             </div>
           ))
         : ""}
-      {photoIndex.isOpen && (
-        <Lightbox mainSrc={`/assets/images${photoIndex?.image}`} nextSrc={`/assets/images${FeshionImgData[(photoIndex.index + 1) % FeshionImgData.length].img}`} prevSrc={`/assets/images${FeshionImgData[(photoIndex.index + FeshionImgData.length - 1) % FeshionImgData.length].img}`} imageTitle={photoIndex.index + 1 + "/" + FeshionImgData.length} onCloseRequest={() => setPhotoIndex({ ...photoIndex, isOpen: false })} onMovePrevRequest={onMovePrev} onMoveNextRequest={onMoveNext} />
-      )}
-    </Fragment>
+    </Gallery>
   );
 };
 

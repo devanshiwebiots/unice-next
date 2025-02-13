@@ -10,36 +10,38 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-top-level-await": "^7.14.5",
-    "@tanstack/react-query": "^4.29.15",
+    "@tanstack/react-query": "^5.66.0",
     "aos": "^2.3.4",
-    "apollo-server-micro": "^3.6.3",
-    "axios": "^1.6.8",
-    "bootstrap": "^5.2.3",
-    "bootstrap-scss": "^5.2.3",
-    "deepmerge": "^4.3.1",
-    "micro-cors": "^0.1.1",
-    "next": "^14.2.2",
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "bootstrap-scss": "^5.3.3",
+    "next": "^15.1.7",
     "nprogress": "^0.2.0",
-    "react": "^18.2.0",
-    "react-18-image-lightbox": "^5.1.4",
-    "react-countdown-now": "^2.1.2",
-    "react-countup": "^6.4.2",
-    "react-dom": "^18.2.0",
-    "react-fullpage": "^0.1.19",
+    "react": "^19.0.0",
+    "react-countdown": "^2.3.6",
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.0.0",
     "react-light-accordion": "^0.1.4",
     "react-masonry-css": "^1.0.16",
-    "react-parallax-tilt": "^1.7.118",
-    "react-slick": "^0.29.0",
-    "react-toastify": "^9.1.1",
-    "reactstrap": "^9.0.0-8",
-    "typewriter-effect": "^2.19.0"
+    "react-parallax-tilt": "^1.7.282",
+    "react-photoswipe-gallery": "^3.0.2",
+    "react-simple-typewriter": "^5.0.1",
+    "react-slick": "^0.30.3",
+    "react-toastify": "^11.0.3",
+    "reactstrap": "^9.2.3",
+    "swiper": "^11.2.2"
   },
   "devDependencies": {
-    "@types/react": "18.2.79",
-    "eslint": "^8",
-    "eslint-config-next": "^14.2.2",
-    "nodemon": "^2.0.21",
+    "@types/react": "19.0.8",
+    "eslint": "^9",
+    "eslint-config-next": "^15.1.7",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.59.3"
+    "sass": "^1.77.6"
+  },
+  "overrides": {
+    "react-popper": {
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0"
+    }
   }
 }

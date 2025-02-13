@@ -14,7 +14,7 @@ const request = async ({ ...options }, router) => {
       router && router.push("/403")
     }
     router && router.push('/404')
-    console.log("error axios-utils", error?.response?.status);
+    console.error("error axios-utils", error?.response?.status);
     return error;
   };
   try {

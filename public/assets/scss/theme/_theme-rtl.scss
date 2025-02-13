@@ -1710,12 +1710,6 @@
         }
       }
     }
-    // &.yoga {
-    //   .button-primary {
-    //     left: 28px;
-    //     right: unset;
-    //   }
-    // }
     &.wedding {
       .button-primary {
         button {
@@ -2214,7 +2208,6 @@
           .search-count {
             border-right: 1px solid #ddd;
             border-left: 1px solid #ddd;
-            // border-left : unset;
           }
           .collection-view {
             padding-left: 0 !important;
@@ -2852,7 +2845,6 @@
     .gym {
       .counter-container {
         + .counter-container {
-          // border-right: 1px solid #ddd;
           border-left: unset;
         }
       }

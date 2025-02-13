@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { Col, Container, Row } from "reactstrap";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import CardWrapper from "../../../../../containers/blog/card/grid-wrapper";
 import Categories from "../../../../../containers/blog/categories";
 import Instagram from "../../../../../containers/blog/instagram";
@@ -10,16 +10,13 @@ import PopularPosts from "../../../../../containers/blog/posts";
 import CommonLayout from "../../../../../containers/common/common-layout";
 import request from "../../../../../../Utils/AxiosUtils";
 
-
 const ClassicLeftSidebar = () => {
-  const { data, isLoading, refetch } = useQuery(["/blog"], () => request({ url: "/blogs", }), {
-    enabled: false,
-    refetchOnWindowFocus: false,
-    select: (res) => res.data.data,
-  });
-useEffect(() => {
-  isLoading && refetch()
-}, [isLoading])
+  
+  const { data, isLoading, refetch } = useQuery({ queryKey: ["/blog"], queryFn: () => request({ url: "/blogs" }), enabled: true, refetchOnWindowFocus: false, select: (res) => res.data.data });
+  
+  useEffect(() => {
+    isLoading && refetch();
+  }, []);
 
   return (
     <>

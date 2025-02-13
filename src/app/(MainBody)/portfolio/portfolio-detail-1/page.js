@@ -1,11 +1,10 @@
 "use client"
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../../../../containers/common/common-layout";
 import Slider from "react-slick";
-import Lightbox from "react-18-image-lightbox";
+import { Gallery, Item } from "react-photoswipe-gallery";
 import { PortfolioDetail1Data } from "../../../../database/portfolio/database";
 import { Container, Row, Col } from "reactstrap";
-import "react-18-image-lightbox/style.css";
 
 var settings = {
   dots: false,
@@ -38,22 +37,7 @@ var settings1 = {
 
 const PortfolioDetail1 = () => {
   const initilindex = { index: 0, isOpen: false };
-  const [photoIndex, setPhotoIndex] = useState(initilindex);
-
-  const onClickImg = (img, i) => {
-    setPhotoIndex({ ...photoIndex, index: i, image: img, isOpen: true });
-  };
-  const onMoveNext = () => {
-    const next = (photoIndex.index + 1) % PortfolioDetail1Data.length;
-    const test = PortfolioDetail1Data[(photoIndex.index + 1) % PortfolioDetail1Data.length];
-    setPhotoIndex({ ...photoIndex, index: next, image: test.img });
-  };
-  const onMovePrev = () => {
-    const prev = (photoIndex.index + PortfolioDetail1Data.length - 1) % PortfolioDetail1Data.length;
-    const test = PortfolioDetail1Data[(photoIndex.index + PortfolioDetail1Data.length - 1) % PortfolioDetail1Data.length];
-    setPhotoIndex({ ...photoIndex, index: prev, image: test.img });
-  };
-
+  
   return (
     <Layout pathList={["portfolio details", "container layout"]} pathTitle="container layout">
       <section className="portfolio-section port-col zoom-gallery detail-page fullwidth-portfolio agency">
@@ -75,29 +59,24 @@ const PortfolioDetail1 = () => {
           <div>
             <Container fluid={true} className="p-t-30 px-0">
               <Row className="m-0">
-                <Slider className="portfolio-slider col-sm-12 p-0" {...settings}>
-                  {PortfolioDetail1Data.map((data, i) => {
-                    return (
+                <Gallery>
+                  <Slider className="portfolio-slider col-sm-12 p-0" {...settings}>
+                    {PortfolioDetail1Data.map((data, i) => (
                       <div className="item" key={i}>
                         <div className="isotopeSelector">
                           <div className="overlay">
                             <div className="border-portfolio">
-                              <a className="zoom_gallery" data-source={data[photoIndex.index]} href="#javascript" title="Into The Blue">
-                                <img alt="" className="img-fluid blur-up lazyload" onClick={() => onClickImg(data.img, i)} src={data.img} />
-                              </a>
+                              <Item original={data.img} thumbnail={data.img} width="960" height="980">
+                                {({ ref, open }) => <img ref={ref} alt="" className="img-fluid blur-up lazyload" onClick={open} src={data.img} />}
+                              </Item>
                             </div>
                           </div>
                         </div>
                       </div>
-                    );
-                  })}
-                </Slider>
+                    ))}
+                  </Slider>
+                </Gallery>
               </Row>
-              {photoIndex.isOpen && (
-                <>
-                  <Lightbox mainSrc={`${photoIndex?.image}`} nextSrc={`${PortfolioDetail1Data[(photoIndex.index + 1) % PortfolioDetail1Data.length].img}`} prevSrc={`${PortfolioDetail1Data[(photoIndex.index + PortfolioDetail1Data.length - 1) % PortfolioDetail1Data.length].img}`} imageTitle={photoIndex.index + 1 + "/" + PortfolioDetail1Data.length} onCloseRequest={() => setPhotoIndex({ ...photoIndex, isOpen: false })} onMovePrevRequest={onMovePrev} onMoveNextRequest={onMoveNext} />
-                </>
-              )}
             </Container>
             <Container className="m-t-50">
               <Row>

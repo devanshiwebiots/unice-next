@@ -1,8 +1,9 @@
 "use client";
 import { Component, useEffect } from "react";
 import { unstable_batchedUpdates } from "react-dom";
-import { SectionsContainer } from "react-fullpage";
 import { Col, Container, Row } from "reactstrap";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Header from "../../../../containers/common/header";
 unstable_batchedUpdates(() => (console.error = () => {}));
 class ErrorBoundary extends Component {
@@ -13,18 +14,6 @@ class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
-var options = {
-  sectionClassName: "section",
-  anchors: ["sectionOne", "sectionTwo", "sectionThree", "sectionFour"],
-  scrollBar: false,
-  navigation: true,
-  verticalAlign: false,
-  sectionPaddingTop: "50px",
-  sectionPaddingBottom: "50px",
-  arrowNavigation: true,
-  autoplay: true,
-};
-
 const VerticalSlide = () => {
   useEffect(() => {
     document.body.style.setProperty("--primary", "#000");
@@ -40,20 +29,15 @@ const VerticalSlide = () => {
           <Row>
             <Col xs="12">
               <div className="vertical-slider">
-                <SectionsContainer {...options}>
-                  <section className="prtfolio-full-screen p-0">
-                    <img alt="" className="img-fluid img-to-bg" src="../assets/images/portfolio/multiple-carousel/2.jpg" />
-                  </section>
-                  <section className="prtfolio-full-screen p-0">
-                    <img alt="" className="img-fluid img-to-bg" src="../assets/images/portfolio/multiple-carousel/3.jpg" />
-                  </section>
-                  <section className="prtfolio-full-screen p-0">
-                    <img alt="" className="img-fluid img-to-bg" src="../assets/images/portfolio/multiple-carousel/4.jpg" />
-                  </section>
-                  <section className="prtfolio-full-screen p-0">
-                    <img alt="" className="img-fluid img-to-bg" src="../assets/images/portfolio/multiple-carousel/5.jpg" />
-                  </section>
-                </SectionsContainer>
+                <Swiper direction={"vertical"} pagination={{ clickable: true }} slidesPerView={1} spaceBetween={0} autoplay={{ delay: 3000 }} modules={[Pagination, Autoplay]} className="mySwiper">
+                  {[...Array(4)].map((_, index) => (
+                    <SwiperSlide key={index}>
+                      <section className="prtfolio-full-screen p-0">
+                        <img alt="" className="img-fluid img-to-bg" src={`../assets/images/portfolio/multiple-carousel/${index + 2}.jpg`} />
+                      </section>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </Col>
           </Row>

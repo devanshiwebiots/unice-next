@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import { AllImgData, BagsImgData, FeshionImgData, ShoesImgData, WatchImgData } from "../../../database/features/gallery/database";
-import Lightbox from "react-18-image-lightbox";
+// import Lightbox from "react-18-image-lightbox";
+import { Gallery, Item } from "react-photoswipe-gallery";
 import { Container, Row, Col } from "reactstrap";
 
 const feshion = [require("../../../public/assets/images/portfolio/1.jpg"), require("../../../public/assets/images/portfolio/2.jpg"), require("../../../public/assets/images/portfolio/3.jpg"), require("../../../public/assets/images/portfolio/4.jpg")];
@@ -60,7 +61,7 @@ const Basic = ({ className, title, subTitle, fluid }) => {
       <div className={fluid || "container"}>
         <TabContent className="isotopeContainer row" activeTab={activeTab}>
           <TabPane className="row" tabId="1">
-            {AllImgData.map((imgItem, i) => {
+            {/* {AllImgData.map((imgItem, i) => {
               return (
                 <div className={className} key={i}>
                   <div className="overlay">
@@ -83,7 +84,31 @@ const Basic = ({ className, title, subTitle, fluid }) => {
                   )}
                 </div>
               );
-            })}
+            })} */}         
+            {/* <Gallery>
+              {AllImgData.map((imgItem, i) => (
+                <div className={className} key={i}>
+                  <div className="overlay">
+                    <div className="border-portfolio">
+                      <div className="zoom_gallery" data-attribute="SRL" title="">
+                        <div className="overlay-background">
+                          <i aria-hidden="true" className="fa fa-plus"></i>
+                        </div>
+                        <Item original={imgItem.img} thumbnail={imgItem.img} width="1024" height="768">
+                          {({ ref, open }) => <img ref={ref} alt="" className="img-fluid blur-up lazyload" src={imgItem.img} onClick={open} />}
+                        </Item>
+                      </div>
+                    </div>
+                  </div>
+                  {title && (
+                    <div className="portfolio-text">
+                      <h3 className="head-text">{title}</h3>
+                      <h6 className="head-sub-text">{subTitle}</h6>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </Gallery>            */}
           </TabPane>
           <TabPane className="row" tabId="2">
             {FeshionImgData.map((imgItem, i) => {
@@ -93,7 +118,7 @@ const Basic = ({ className, title, subTitle, fluid }) => {
                     <div className="border-portfolio">
                       <a className="zoom_gallery" data-source="" href="#javascript" title="">
                         <img alt="" className="img-fluid blur-up lazyload" onClick={() => setIsOpen(true)} src={imgItem.img} />
-                        {isOpen && <Lightbox mainSrc={feshion[photoIndex]} nextSrc={feshion[(photoIndex + 1) % feshion.length]} prevSrc={feshion[(photoIndex + feshion.length - 1) % feshion.length]} onCloseRequest={() => setIsOpen(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + feshion.length - 1) % feshion.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % feshion.length)} />}
+                        {/* {isOpen && <Lightbox mainSrc={feshion[photoIndex]} nextSrc={feshion[(photoIndex + 1) % feshion.length]} prevSrc={feshion[(photoIndex + feshion.length - 1) % feshion.length]} onCloseRequest={() => setIsOpen(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + feshion.length - 1) % feshion.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % feshion.length)} />} */}
                       </a>
                     </div>
                   </div>
@@ -115,7 +140,7 @@ const Basic = ({ className, title, subTitle, fluid }) => {
                     <div className="border-portfolio">
                       <a className="zoom_gallery" data-source="" href="#javascript" title="">
                         <img alt="" className="img-fluid blur-up lazyload" onClick={() => setIsBges(true)} src={imgItem.img} />
-                        {isBges && <Lightbox mainSrc={bags[photoIndex]} nextSrc={bags[(photoIndex + 1) % bags.length]} prevSrc={bags[(photoIndex + bags.length - 1) % bags.length]} onCloseRequest={() => setIsBges(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + bags.length - 1) % bags.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % bags.length)} />}
+                        {/* {isBges && <Lightbox mainSrc={bags[photoIndex]} nextSrc={bags[(photoIndex + 1) % bags.length]} prevSrc={bags[(photoIndex + bags.length - 1) % bags.length]} onCloseRequest={() => setIsBges(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + bags.length - 1) % bags.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % bags.length)} />} */}
                       </a>
                     </div>
                   </div>
@@ -137,7 +162,7 @@ const Basic = ({ className, title, subTitle, fluid }) => {
                     <div className="border-portfolio">
                       <a className="zoom_gallery" data-source="" href="#javascript" title="">
                         <img alt="" className="img-fluid blur-up lazyload" onClick={() => setIsWatch(true)} src={imgItem.img} />
-                        {isWatch && <Lightbox mainSrc={shoes[photoIndex]} nextSrc={shoes[(photoIndex + 1) % shoes.length]} prevSrc={shoes[(photoIndex + shoes.length - 1) % shoes.length]} onCloseRequest={() => setIsWatch(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + shoes.length - 1) % shoes.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % shoes.length)} />}
+                        {/* {isWatch && <Lightbox mainSrc={shoes[photoIndex]} nextSrc={shoes[(photoIndex + 1) % shoes.length]} prevSrc={shoes[(photoIndex + shoes.length - 1) % shoes.length]} onCloseRequest={() => setIsWatch(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + shoes.length - 1) % shoes.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % shoes.length)} />} */}
                       </a>
                     </div>
                   </div>
@@ -159,7 +184,7 @@ const Basic = ({ className, title, subTitle, fluid }) => {
                     <div className="border-portfolio">
                       <a className="zoom_gallery" data-source="" href="#javascript" title="">
                         <img alt="" className="img-fluid blur-up lazyload" onClick={() => setIsShoes(true)} src={imgItem.img} />
-                        {isShoes && <Lightbox mainSrc={watches[photoIndex]} nextSrc={watches[(photoIndex + 1) % watches.length]} prevSrc={watches[(photoIndex + watches.length - 1) % watches.length]} onCloseRequest={() => setIsShoes(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + watches.length - 1) % watches.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % watches.length)} />}
+                        {/* {isShoes && <Lightbox mainSrc={watches[photoIndex]} nextSrc={watches[(photoIndex + 1) % watches.length]} prevSrc={watches[(photoIndex + watches.length - 1) % watches.length]} onCloseRequest={() => setIsShoes(false)} onMovePrevRequest={() => setPhotoIndex((photoIndex + watches.length - 1) % watches.length)} onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % watches.length)} />} */}
                       </a>
                     </div>
                   </div>

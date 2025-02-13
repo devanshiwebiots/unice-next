@@ -1071,6 +1071,14 @@ section {
     }
   }
 }
+
+  .multiple-carousel{
+    .vertical-slider{
+      .swiper-vertical{
+        height: 100vh;
+      }
+    }
+  }
 .img-container {
   position: relative;
   display: inline-block;
@@ -17036,7 +17044,6 @@ footer {
   }
   .parallax-banner {
     .full-banner {
-      // background-image: url("/assets/images/ecommerce/full-banner.jpg");
       background-size: cover;
     }
   }
@@ -17298,7 +17305,6 @@ footer {
   }
   .small-banner {
     height: 250px;
-    // background-image: url(/assets/images/ecommerce/full-banner2.jpg);
     background-size: cover;
     background-position: center center;
   }

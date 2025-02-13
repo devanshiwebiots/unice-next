@@ -8,10 +8,12 @@ import { ToastContainer } from "react-toastify";
 import Customizer from "../../containers/customizer";
 import "../../index.scss";
 import {
-  Hydrate,
+  HydrationBoundary,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+
+
 
 const { publicRuntimeConfig = {} } = getConfig() || {};
 
@@ -84,13 +86,13 @@ const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={children.dehydratedState}>
+      <HydrationBoundary state={children.dehydratedState}>
         <div>
           <MyFunctionComponent>{children}</MyFunctionComponent>
           <Customizer />
           <ToastContainer />
         </div>
-      </Hydrate>
+      </HydrationBoundary>
     </QueryClientProvider>
   );
 }

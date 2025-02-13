@@ -86,10 +86,10 @@ export const MENUITEMS = [
                { path: '/page/team-list', title: 'Team List', type: 'link' }]
          },
          {
-            title: 'Comming Soon', type: 'sub', children: [
+            title: 'Coming Soon', type: 'sub', children: [
 
-               { path: '/page/commingsoon1', title: 'Comming Soon1', type: 'link' },
-               { path: '/page/commingsoon2', title: 'Comming Soon2', type: 'link' }]
+               { path: '/page/commingsoon1', title: 'Coming Soon1', type: 'link' },
+               { path: '/page/commingsoon2', title: 'Coming Soon2', type: 'link' }]
          }]
    },
    {

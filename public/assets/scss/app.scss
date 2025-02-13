@@ -5,4 +5,12 @@
 @import "./slick.scss";
 @import "./slick-theme.scss";
 @import "./landing.scss";
-@import "~react-18-image-lightbox/style.css";
+
+//photoswipe
+@import "photoswipe/dist/photoswipe.css";
+
+//swiper
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/navigation";
+@import "swiper/css/grid";

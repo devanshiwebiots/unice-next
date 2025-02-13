@@ -1,15 +1,5 @@
 "use client";
 import Layout from "../../../../containers/common/common-layout";
-// import Faq from '../layouts/sections/modern-sass/faq';
-
-// const AccordionElementSection = () => (
-//     <Layout pathList={['elements', 'accordion']} pathTitle="elements with accordion">
-//         <Faq />
-//     </Layout>
-// )
-
-// export default AccordionElementSection;
-
 import { Accordion, AccordionItem } from "react-light-accordion";
 import "react-light-accordion/demo/css/index.css";
 import { Col, Container, Row } from "reactstrap";

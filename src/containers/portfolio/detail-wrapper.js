@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
 import Slider from "react-slick";
 import { PortfolioDetail1Data } from "./database";
-import Lightbox from "react-18-image-lightbox";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { Container, Row, Col } from "reactstrap";
+import { Gallery, Item } from "react-photoswipe-gallery";
 
 const images = [require("../../../public/assets/images/portfolio/2.jpg"), require("../../../public/assets/images/portfolio/3.jpg"), require("../../../public/assets/images/portfolio/5.jpg"), require("../../../public/assets/images/portfolio/4.jpg"), require("../../../public/assets/images/portfolio/5.jpg")];
 var settings = {
@@ -99,7 +99,7 @@ const VideoWrapper = () => {
           <Modal isOpen={modal} toggle={toggle} centered={true} size="lg">
             <ModalHeader toggle={toggle} className="modal-no-header close-up"></ModalHeader>
             <ModalBody className="iframe-modal">
-              <iframe className="mfp-iframe" frameBorder="0" allowFullScreen="" src="//www.youtube.com/embed/dNIfsv1rKJo?autoplay=1"></iframe>
+              <iframe className="mfp-iframe" allowFullScreen="" src="//www.youtube.com/embed/dNIfsv1rKJo?autoplay=1"></iframe>
             </ModalBody>
           </Modal>
         </div>
@@ -124,23 +124,6 @@ const DetailWrapper = ({ showcaseType }) => {
     }
   };
 
-  const initilindex = { index: 0, isOpen: false };
-  const [photoIndex, setPhotoIndex] = useState(initilindex);
-
-  const onClickImg = (img, i) => {
-    setPhotoIndex({ ...photoIndex, index: i, image: img, isOpen: true });
-  };
-  const onMoveNext = () => {
-    const next = (photoIndex.index + 1) % PortfolioDetail1Data.length;
-    const test = PortfolioDetail1Data[(photoIndex.index + 1) % PortfolioDetail1Data.length];
-    setPhotoIndex({ ...photoIndex, index: next, image: test.img });
-  };
-  const onMovePrev = () => {
-    const prev = (photoIndex.index + PortfolioDetail1Data.length - 1) % PortfolioDetail1Data.length;
-    const test = PortfolioDetail1Data[(photoIndex.index + PortfolioDetail1Data.length - 1) % PortfolioDetail1Data.length];
-    setPhotoIndex({ ...photoIndex, index: prev, image: test.img });
-  };
-
   return (
     <Fragment>
       <section className="portfolio-section port-col zoom-gallery detail-page fullwidth-portfolio agency">
@@ -148,26 +131,27 @@ const DetailWrapper = ({ showcaseType }) => {
 
         <Container fluid={true} className="p-t-30 px-0">
           <Row>
-            <Slider className="portfolio-slider col-sm-12" {...settings}>
-              {PortfolioDetail1Data.map((data, i) => {
-                return (
-                  <div className="item" key={i}>
-                    <div className="isotopeSelector">
-                      <div className="overlay">
-                        <div className="border-portfolio">
-                          <a className="zoom_gallery" data-source={data[photoIndex.index]} href="#javascript" title="Into The Blue">
-                            <img alt="" className="img-fluid blur-up lazyload" onClick={() => onClickImg(data.img, i)} src={data.img} />
-                          </a>
+            <Gallery>
+              <Slider className="portfolio-slider col-sm-12" {...settings}>
+                {PortfolioDetail1Data.map((data, i) => {
+                  return (
+                    <div className="item" key={i}>
+                      <div className="isotopeSelector">
+                        <div className="overlay">
+                          <div className="border-portfolio">
+                            <Item original={data.img} thumbnail={data.img} width="960" height="980">
+                              {({ ref, open }) => <img ref={ref} alt="" className="img-fluid blur-up lazyload" onClick={open} src={data.img} />}
+                            </Item>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </Slider>
+                  );
+                })}
+              </Slider>
+            </Gallery>
           </Row>
         </Container>
-        {photoIndex.isOpen && <Lightbox mainSrc={`${photoIndex?.image}`} nextSrc={`${PortfolioDetail1Data[(photoIndex.index + 1) % PortfolioDetail1Data.length].img}`} prevSrc={`${PortfolioDetail1Data[(photoIndex.index + PortfolioDetail1Data.length - 1) % PortfolioDetail1Data.length].img}`} imageTitle={photoIndex.index + 1 + "/" + PortfolioDetail1Data.length} onCloseRequest={() => setPhotoIndex({ ...photoIndex, isOpen: false })} onMovePrevRequest={onMovePrev} onMoveNextRequest={onMoveNext} />}
         <Container className="m-t-50">
           <Row>
             <Col md="5">

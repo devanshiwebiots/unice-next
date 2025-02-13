@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "reactstrap";
-import Typewriter from "typewriter-effect";
+import { Typewriter } from "react-simple-typewriter";
 import CountdownComponent from "../../../../containers/common/countdown";
 
 const Banner = ({ router }) => {
@@ -20,13 +20,7 @@ const Banner = ({ router }) => {
                       <h1>
                         come&nbsp;
                         <span className="typed">
-                          <Typewriter
-                            options={{
-                              strings: ["unice"],
-                              autoStart: true,
-                              loop: true,
-                            }}
-                          />
+                          <Typewriter words={["unice"]} loop={true} cursor />
                         </span>
                       </h1>
                     </div>
