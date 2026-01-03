@@ -4315,7 +4315,7 @@ booking section end
     background-repeat: no-repeat;
     .row {
       > div {
-        &:last-child(1) {
+        &:last-child {
           .sponsor-img {
             margin-bottom: 0;
           }
